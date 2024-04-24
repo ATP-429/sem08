@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Load the tweet data from a CSV file
-data = pd.read_csv("tweet_data.csv")
+data = pd.read_csv("sma/tweet_data.csv")
 
 # Remove any rows with missing values
 data = data.dropna()
@@ -49,7 +49,7 @@ plt.figure(figsize=(12, 6))
 
 # name, values
 sns.barplot(x=state_counts.index, y=state_counts.values, palette="rocket")
-plt.xticks(rotation=90)
+#plt.xticks(rotation=90)
 plt.xlabel('State')
 plt.ylabel('Frequency')
 plt.title('Frequency of States in Tweet Data')

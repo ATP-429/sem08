@@ -13,11 +13,13 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 # Read the dataset into a pandas DataFrame
-df = pd.read_csv("sentiment.csv")
+df = pd.read_csv("sma/sentiment.csv")
 
 # Perform sentiment analysis using TextBlob and store the polarity score
 df["polarity"] = df["text"].apply(lambda x: TextBlob(x).sentiment.polarity)
 print(df.head())
+
+df["label"] = df["polarity"].apply(lambda x: "positive" if x > 0.0 else "negative")
 
 # Create separate DataFrames for positive and negative tweets
 pos_tweets = df[df["label"] == "positive"]

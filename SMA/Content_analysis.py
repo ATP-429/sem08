@@ -8,7 +8,7 @@ from gensim.models import LdaModel
 from gensim.utils import simple_preprocess
 from gensim.parsing.preprocessing import STOPWORDS
 
-df = pd.read_csv('social_media_data.csv')
+df = pd.read_csv('SMA/social_media_data.csv')
 
 stop_words = set(STOPWORDS)
 def preprocess(text):
@@ -32,5 +32,6 @@ for topic in lda_model.print_topics():
     print(topic)
 
 vis = pyLDAvis.gensim_models.prepare(lda_model, corpus, dictionary)
-pyLDAvis.display(vis)
+pyLDAvis.show(vis, local=False)
+
 

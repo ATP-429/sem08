@@ -19,7 +19,7 @@ from textblob import TextBlob
 from wordcloud import WordCloud
 
 # Read the dataset into a pandas DataFrame
-df = pd.read_csv("engagement.csv")
+df = pd.read_csv("sma/engagement.csv")
 
 # Remove stop words from the tweet text
 # stop_words = set(stopwords.words("english"))
@@ -37,10 +37,11 @@ plt.title("Engagement Analysis of Tweets")
 plt.show()
 
 # Create a bar chart of the most common words in the tweet text
-wordcloud = WordCloud(background_color="white", max_words=50,
-                      contour_width=3, contour_color="steelblue")
+# wordcloud = WordCloud(background_color="white", max_words=50,
+                      #contour_width=3, contour_color="steelblue")
+wordcloud = WordCloud()
 wordcloud.generate(" ".join(df["text"]))
-plt.imshow(wordcloud, interpolation='bilinear')
+plt.imshow(wordcloud)
 plt.axis("off")
 plt.show()
 

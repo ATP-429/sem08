@@ -12,7 +12,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Read in the CSV file
-df = pd.read_csv('trend_analysis.csv')
+df = pd.read_csv('sma/trend_analysis.csv')
 
 # Convert the 'date' column to a datetime data type
 df['date'] = pd.to_datetime(df['date'])
@@ -26,7 +26,7 @@ df.set_index('date', inplace=True)
 # argument 'D' indicating that we want to resample by day.
 # daily_counts = df.resample('D').count()
 daily_counts = df.resample('D').count()
-print("Daily Counts: \n", daily_counts)
+print("Daily Counts:\n", daily_counts.head())
 
 
 # Plot the daily counts over time

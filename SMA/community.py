@@ -5,7 +5,7 @@ from networkx.algorithms import community
 import matplotlib.pyplot as plt
 warnings.filterwarnings('ignore')
 
-dataset = pd.read_csv('tweets.csv')
+dataset = pd.read_csv('sma/tweets.csv')
 dataset = dataset[dataset.user_location.notnull()][:10]
 dataset['hashtags'] = ''
 
@@ -28,21 +28,11 @@ for name, group in dataset.groupby(['hashtags', 'user']):
 
 # Community Detection
 community_gen = community.girvan_newman(vis)
-top_level_communities = next(community_gen)
 
 communities = list(next(community_gen))
 print("Comm", communities)
-# colors = ['red', 'yellow', 'orange']
-# node_colors = {}
 
-# for i, comm in enumerate(communities):
-#     for node in comm:
-#         node_colors[node] = colors[i]
-
-# nx.set_node_attributes(vis, node_colors, name='color')
-# node_colors = nx.get_node_attributes(vis, 'color')
-
-nx.draw(vis)
+nx.draw(vis, with_labels=True)
 plt.axis('off')
 plt.show()
 
